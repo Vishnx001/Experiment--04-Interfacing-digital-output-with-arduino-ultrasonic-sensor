@@ -126,7 +126,7 @@ void loop()
 
 
 ### RESULTS
-
+Aurdino uno is interfaced with ultrasonic sensor and output value are integrated on a graph.
 
 
  
