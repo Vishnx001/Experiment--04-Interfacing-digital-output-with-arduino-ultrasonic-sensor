@@ -37,9 +37,7 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 ### FIGURE 01 CIRCUIT OF INTERFACING ULTRASONIC SENSOR 
 
 
-![image](https://user-images.githubusercontent.com/36288975/166430594-5adb4ca9-5a42-4781-a7e6-7236b3766a85.png)
-
-
+![Screenshot 2024-03-07 111914](https://github.com/Vishnx001/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/134037148/b920ddf4-075e-4bea-bb92-c94e39fd7211)
 
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
@@ -55,13 +53,55 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 
 ### PROGRAM 
+const int trigpin=10;
+const int echopin=9;
+int red=7;
+int green=6;
+long duration;
+int distance;
 
+void setup()
+{
+  pinMode(trigpin,OUTPUT);
+  pinMode(echopin,INPUT);
+  pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+  Serial.begin(9600);
+}  
+void loop()
+{
+  digitalWrite(trigpin,LOW);
+  delay(20);
+  digitalWrite(trigpin,HIGH);
+  delay(20);
+  digitalWrite(trigpin,LOW);
+  duration=pulseIn(echopin,HIGH);
+  distance=duration*0.034/2;
+  Serial.print(distance);
+  Serial.println("cms");
+  if(distance>5)
+  {
+    digitalWrite(red,HIGH);
+    delay(200);
+    digitalWrite(red,LOW);
+    delay(200);
+  }
+  else{
+    
+    digitalWrite(green,HIGH);
+    delay(200);
+    digitalWrite(green,LOW);
+    delay(200);
+  }
+}
 
 
 
 
 
 ### Distance vs measurement table 
+![Screenshot 2024-03-07 111557](https://github.com/Vishnx001/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/134037148/e933c5fa-dd15-45c1-a6f6-5c019351e08f)
+![Screenshot 2024-03-07 111914](https://github.com/Vishnx001/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/134037148/cf84b266-be3c-4b81-b3d6-2211116f2d95)
 
 			
  
@@ -69,7 +109,6 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 			
 			
 
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
 
 			
 			
